@@ -22,16 +22,14 @@ void xuat_Array(int* arr, int& n)
     cout << endl;
 }
 
-// int size_of_Array(int* arr)
-// {
-    
-// }
-
-void lay_phan_tu_tai_vitri(int* arr, int& n)
+bool ascending(int t, int s)
 {
-    int findIndex;
-    cout << "Nhap vi tri can lay: "; cin >> findIndex;
-    cout << arr[findIndex - 1] << endl;
+    return t > s;
+}
+
+bool descending(int t, int s)
+{
+    return t < s;
 }
 
 void swap(int& num1, int& num2)
@@ -41,7 +39,46 @@ void swap(int& num1, int& num2)
     num2 = temp;
 }
 
-void selectionSort(int *arr)
+
+void lay_phan_tu_tai_vitri(int* arr, int& n)
+{
+    int findIndex;
+    cout << "Nhap vi tri can lay: "; cin >> findIndex;
+    cout << arr[findIndex - 1] << endl;
+}
+
+
+void selectionSort(int arr[], int n, bool (*p)(int, int) = ascending)
+{
+    int k;
+    for (int i = 0;i < n-1;i++)
+    {
+        for (int j = i + 1;j < n;j++)
+        {
+            if ((*ascending)(arr[k], arr[j]))
+            {
+                k = j;
+            }
+        }
+        swap(arr[i], arr[k]);
+    }
+    xuat_Array(arr, n);
+}
+
+void insertionSort(int arr[], int n, bool (*p)(int, int) = ascending)
+{
+    int j;
+    for (int i = 1;i < n;i++)
+    {
+        j = i - 1;
+        while (j >= 0 && (*p)(arr[j], arr[i]))
+        {
+            arr[j + 1] = arr[j];
+            arr[j] = arr[i];
+        }
+    }
+    xuat_Array(arr, n);
+}
 
 int main()
 {
@@ -62,8 +99,8 @@ int main()
     cout << "Enter your choice (1-7): "; cin >> choice;
 
     switch (choice) {
-        case 1:
-
+        case 1: selectionSort(arr, n);
+        case 2: insertionSort(arr, n);
     }
 
     delete[] arr;
