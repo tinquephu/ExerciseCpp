@@ -99,8 +99,8 @@ int main()
     cout << "Enter your choice (1-7): "; cin >> choice;
 
     switch (choice) {
-        case 1: selectionSort(arr, n);
-        case 2: insertionSort(arr, n);
+        case 1: selectionSort(arr, n); break;
+        case 2: insertionSort(arr, n); break;
     }
 
     delete[] arr;
