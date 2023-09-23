@@ -105,9 +105,8 @@ void shellSort(int arr[], int n, bool ascending) {
         for (int i = gap; i < n; i++) {
             int temp = arr[i];
             int j;
-            while ((ascending && j >= gap && arr[j - gap] > temp) || (!ascending && j >= gap && arr[j - gap] < temp)) {
+            for (j = i; (ascending && j >= gap && arr[j - gap] > temp) || (!ascending && j >= gap && arr[j - gap] < temp); j -= gap) {
                 arr[j] = arr[j - gap];
-                j -= gap;
             }
             arr[j] = temp;
         }

@@ -203,7 +203,7 @@ int main() {
 
     cout << "Mang da sap xep: ";
     printArray(arr, n);
-
+    delete[] arr;
     return 0;
 }
 

@@ -1,8 +1,18 @@
 #include <iostream>
+const int MAX = 10;
 
 using namespace std;
 
-// Hàm trợ giúp: In mảng
+void writeArray(int* arr, int& n)
+{
+    cout << "Nhap so luong mang: "; cin >> n;
+    for (int i = 0;i < n;i++)
+    {
+        cout << "arr[" << i + 1 << "]= ";
+        cin >> arr[i];
+    }
+}
+
 void printArray(int arr[], int n) {
     for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
@@ -192,9 +202,9 @@ int interpolationSearch(int arr[], int n, int key) {
 }
 
 int main() {
-    int arr[] = {11, 12, 22, 25, 64};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
+    int n;
+    int *arr = new int[MAX];
+    writeArray(arr, n);
     int choice;
     cout << "Chon cach sap xep (1: Tang dan, 2: Giam dan): ";
     cin >> choice;
@@ -203,7 +213,7 @@ int main() {
     if (choice == 2) {
         ascending = false;
     }
-
+    cout << "Kich thuoc mang la: " << sizeof(arr) << endl;
     cout << "Mang truoc khi sap xep: ";
     printArray(arr, n);
 
